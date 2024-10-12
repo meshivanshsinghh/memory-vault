@@ -6,8 +6,8 @@ import NextTopLoader from "nextjs-toploader";
 import NavBar from "@/components/navbar";
 
 export const metadata: Metadata = {
-  title: "Memory Vault",
-  description: "Tagline for Memory Vault",
+  title: "MemoryVault",
+  description: "Preserve and Share Timeless Moments",
 };
 
 export default async function RootLayout({
