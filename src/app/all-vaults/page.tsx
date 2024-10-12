@@ -1,18 +1,18 @@
-import { redirect } from "next/navigation";
 import { auth } from "@/auth";
-import UploadForm from "@/components/upload-form";
-import { getAllVaultsWithThumbnails } from "@/lib/vault-handler";
+import { redirect } from "next/navigation";
 import VaultItem from "@/components/vault-item";
+import { getAllVaultsWithThumbnails } from "@/lib/vault-handler";
 import { NoVaultsFound } from "@/components/no-vaults";
+import UploadForm from "@/components/upload-form";
 
-export default async function Dashboard() {
+export default async function AllVaultsPage() {
   const user = await auth();
   if (!user?.user) {
-    redirect("/");
+    redirect("/"); // Redirect to home if not authenticated
   }
-
   const vaults = await getAllVaultsWithThumbnails(user.user.id!);
 
+  // Fetch vaults created by this user (admin)
   return (
     <div className="p-8">
       <div className="flex justify-between w-full">

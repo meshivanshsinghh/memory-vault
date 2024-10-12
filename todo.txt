@@ -4,3 +4,11 @@
 - Text content did not match. Server: "Created 10/13/2024" Client: "Created 13/10/2024"
 - add checks in form field. 
 - disbable button while user is creating a vault.
+- make description 2 3 lines
+- get started take user to dashboard.
+- open vault respponsinsve on smaler sizes.
+- show sign in to upload images option
+- loader for images
+- update image count in vaults folder when uploading file.
+- admin/vault/abcdfgh
+- hide admin route

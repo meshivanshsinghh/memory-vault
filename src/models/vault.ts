@@ -4,7 +4,6 @@ export interface IFile {
   name: string;
   type: string;
   cid: string; // Pinata CID
-  url: string; // URL for accessing the file
 }
 
 export interface IVault extends Document {

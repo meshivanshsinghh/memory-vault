@@ -4,19 +4,33 @@ import mongoose from "mongoose"; // Import mongoose for ObjectId
 
 // Function to get vault details
 export const getVault = async (vaultId: string) => {
-  return await Vault.findOne({ _id: vaultId });
+  try {
+    const vault = await Vault.findOne({ _id: vaultId });
+    if (!vault) {
+      return null;
+    }
+    return vault;
+  } catch (error) {
+    console.error(`Error fetching vault with id ${vaultId}:`, error);
+    return null;
+  }
 };
 
 // Function to delete a vault
 export const deleteVault = async (vaultId: string, adminId: string) => {
-  const vault = await Vault.findOne({ _id: vaultId, admin: adminId });
-  if (!vault) {
-    throw new Error("Vault not found");
+  try {
+    const vault = await Vault.findOne({ _id: vaultId, admin: adminId });
+    if (!vault) {
+      return null;
+    }
+
+    await Vault.deleteOne({ _id: vaultId });
+    return true;
+  } catch (error) {
+    console.error(`Error deleting vault with id ${vaultId}:`, error);
+    return null;
   }
-
-  await Vault.deleteOne({ _id: vaultId });
 };
-
 // Define a lean version of the vault interface that doesn't include Mongoose methods
 interface LeanVault {
   _id: string; // Since we'll convert ObjectId to string
